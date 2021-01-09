@@ -1,0 +1,48 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://sprites/birb.png" type="Texture" id=1]
+[ext_resource path="res://birb.gd" type="Script" id=2]
+[ext_resource path="res://sprites/birb_sitting.png" type="Texture" id=3]
+[ext_resource path="res://sprites/birb_hanging.png" type="Texture" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 3.9378, 4.50304 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 8, 0, 8, 8 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "sitting",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "hanging",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 2 ), SubResource( 3 ) ],
+"loop": true,
+"name": "flying",
+"speed": 5.0
+} ]
+
+[node name="birb" type="KinematicBody2D"]
+position = Vector2( 104.028, 50.9941 )
+script = ExtResource( 2 )
+
+[node name="collision_shape" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="anim" type="AnimatedSprite" parent="."]
+frames = SubResource( 4 )
+animation = "flying"
+speed_scale = 0.5
+playing = true

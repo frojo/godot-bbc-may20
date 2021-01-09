@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://sprites/building_default.png" type="Texture" id=1]
+[ext_resource path="res://building.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 39.6572, 59.7661 )
+
+[node name="building" type="StaticBody2D"]
+position = Vector2( -53.2963, 93.8743 )
+script = ExtResource( 2 )
+
+[node name="collision_shape" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="spr" type="Sprite" parent="."]
+texture = ExtResource( 1 )
